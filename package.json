@@ -1,0 +1,22 @@
+{
+  "name": "tfview",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "author": "hiroaki.kubota@mail.crumb.jp",
+  "scripts": {
+    "build": "./node_modules/webpack/bin/webpack.js"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "~4.28.4",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^2.8.2",
+    "@tensorflow/tfjs-vis": "^1.4.3",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "socket.io": "~2.2.0"
+  }
+}
