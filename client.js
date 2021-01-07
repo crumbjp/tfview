@@ -4,7 +4,7 @@ const tfvis = require('@tensorflow/tfjs-vis');
 
 class Socket {
   constructor () {
-    this.clientSocket = io('http://localhost:8080', {reconnection: false});;
+    this.clientSocket = io(location.origin, {reconnection: false});;
     this.clientSocket.on('error', (err) => {
       console.log('Socket error', err);
     });
@@ -55,9 +55,7 @@ socket.on('disconnect', () => {
 });
 
 socket.on('model', async (req) => {
-  window.model = await tf.loadLayersModel(req.modelUrl);
-  window.modelUrl = req.modelUrl;
-  window.weightPathPrefix = req.weightPathPrefix;
+  window.model = await tf.loadLayersModel(`${location.origin}${req.modelUrl}`);
   document.querySelector(`${req.container.selector} .tf-label`).innerHTML = req.container.name;
   tfvis.show.modelSummary(document.querySelector(`${req.container.selector} .area`), window.model);
 });

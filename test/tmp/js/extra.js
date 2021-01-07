@@ -1,29 +1,9 @@
-const IMAGE_WIDTH = 28;
-const IMAGE_HEIGHT = 28;
-const IMAGE_CHANNELS = 1;
-const IMAGE_SIZE = IMAGE_WIDTH * IMAGE_HEIGHT;
-const NUM_CLASSES = 10;
-const dataToTensor = (data) => {
-  const batchImagesArray = new Float32Array(data.length * IMAGE_SIZE);
-  const batchLabelsArray = new Uint8Array(data.length * NUM_CLASSES);
-  for (let i = 0; i < data.length; i++) {
-    batchImagesArray.set(data[i].input, i * IMAGE_SIZE);
-    batchLabelsArray.set(data[i].output, i * NUM_CLASSES);
-  }
-  const xs = tf.tensor2d(batchImagesArray, [data.length, IMAGE_SIZE]);
-  const labels = tf.tensor2d(batchLabelsArray, [data.length, NUM_CLASSES]);
-  return {xs, labels};
-};
-
-const classNames = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+const classNames = ['0', '1'];
 
 const doPrediction = (data) => {
-  const testData = dataToTensor(data);
-  const testxs = testData.xs.reshape([data.length, IMAGE_WIDTH, IMAGE_HEIGHT, 1]);
-  const labels = testData.labels.argMax(-1);
-  const preds = model.predict(testxs).argMax(-1);
-
-  testxs.dispose();
+  const inputs = tf.tensor2d(new Float32Array([0,0,0,1,1,0,1,1]), [4,2]);
+  const labels = tf.tensor2d(new Uint8Array([1,0,0,1,0,1,1,0]), [4,2]).argMax(-1);
+  const preds = window.model.predict(inputs).argMax(-1);;
   return [preds, labels];
 };
 
@@ -48,12 +28,12 @@ const showConfusion = async (preds, labels) => {
       tickLabels: classNames
     });
   labels.dispose();
-}
+};
 
 socket.on('trainFinished', async (req) => {
   window.model = await tf.loadLayersModel(`${location.origin}${req.modelUrl}`);
   console.log('loaded');
-  const [preds, labels] = doPrediction(req.data);
+  const [preds, labels] = doPrediction();
   showAccuracy(preds, labels);
   showConfusion(preds, labels);
 });

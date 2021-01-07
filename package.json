@@ -9,6 +9,16 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@tensorflow/tfjs-node": "^2.8.2",
+    "chai": "^4.2.0",
+    "chai-shallow-deep-equal": "^1.4.6",
+    "deep-equal-in-any-order": "^1.0.12",
+    "mocha": "^5.2.0",
+    "mocha-chrome": "^2.0.0",
+    "mocha-headless-chrome": "^2.0.3",
+    "puppeteer": "3.3.0",
+    "sinon": "^7.2.2",
+    "sinon-chai": "^3.3.0",
     "webpack": "~4.28.4",
     "webpack-cli": "^3.3.2"
   },

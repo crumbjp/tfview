@@ -13,7 +13,7 @@ const createModel = () => {
   // model.add(tf.layers.dense({inputShape: [1], units: 1, useBias: true}));
   // -----------
   model.add(tf.layers.dense({inputShape: [1], units: 2, useBias: true}));
-  model.add(tf.layers.dense({inputShape: [1], units: 3, useBias: true, activation: 'relu'}));
+  model.add(tf.layers.dense({units: 3, useBias: true, activation: 'relu'}));
   // -----------
   // Add an output layer
   model.add(tf.layers.dense({units: 1, useBias: true}));

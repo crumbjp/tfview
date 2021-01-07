@@ -143,7 +143,7 @@ const run = async (done) => {
   let predictData = mnist.set(500, 0);
   tfView.emit('trainFinished', {
     data: predictData.training,
-    modelUrl: `${tfView.urlBase}/models/cnn-test-finished/model.json`,
+    modelUrl: `/models/cnn-test-finished/model.json`,
   });
 
   return;
