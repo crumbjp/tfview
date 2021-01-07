@@ -1,0 +1,16 @@
+{
+  "name": "tfview-example-cnn",
+  "version": "1.0.0",
+  "description": "",
+  "author": "hiroaki.kubota@mail.crumb.jp",
+  "license": "ISC",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^2.8.2",
+    "lodash": "^4.17.20",
+    "mnist": "^1.1.0",
+    "tfview": "file://../../"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "tfview-example-simple-dense",
+  "version": "0.0.1",
+  "description": "",
+  "author": "hiroaki.kubota@mail.crumb.jp",
+  "license": "ISC",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^2.8.2",
+    "lodash": "^4.17.20",
+    "tfview": "file://../../"
+  }
+}
